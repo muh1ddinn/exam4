@@ -1,0 +1,270 @@
+syntax = "proto3";
+
+package superadmin_service;
+option go_package = "genproto/superadmin_service";
+
+
+service ManagerService {
+    rpc CreateStudent (CreateManagerStudent) returns (ManagerStudent);
+    rpc GetStudentByID (ManagerStudentPrimaryKey) returns (ManagerStudent);
+    rpc GetAllStudents (GetListManagerStudentRequest) returns (GetListManagerStudentResponse);
+    rpc UpdateStudent (UpdateManagerStudent) returns (ManagerStudent);
+    rpc DeleteStudent (ManagerStudentPrimaryKey) returns (ManagerStudentPrimaryKey);
+
+    rpc CreateTeacher (CreateManagerTeacher) returns (ManagerTeacher);
+    rpc GetTeacherByID (ManagerTeacherPrimaryKey) returns (ManagerTeacher);
+    rpc GetAllTeachers (GetListManagerTeacherRequest) returns (GetListManagerTeacherResponse);
+    rpc UpdateTeacher (UpdateManagerTeacher) returns (ManagerTeacher);
+    rpc DeleteTeacher (ManagerTeacherPrimaryKey) returns (ManagerTeacherPrimaryKey);
+
+    rpc CreateSupportTeacher (CreateManagerSupportTeacher) returns (ManagerSupportTeacher);
+    rpc GetSupportTeacherByID (ManagerSupportTeacherPrimaryKey) returns (ManagerSupportTeacher);
+    rpc GetAllSupportTeachers (GetListManagerSupportTeacherRequest) returns (GetListManagerSupportTeacherResponse);
+    rpc UpdateSupportTeacher (UpdateManagerSupportTeacher) returns (ManagerSupportTeacher);
+    rpc DeleteSupportTeacher (ManagerSupportTeacherPrimaryKey) returns (ManagerSupportTeacherPrimaryKey);
+
+    rpc CreateManager(CreateManagerRequest) returns (Manager);
+    rpc GetManagerByID(ManagerPrimaryKey) returns (Manager);
+    rpc GetAllManagers(GetAllManagersRequest) returns (GetAllManagersResponse);
+    rpc UpdateManager(UpdateManagerRequest) returns (Manager);
+    rpc DeleteManager(ManagerPrimaryKey) returns (ManagerPrimaryKey);
+
+    rpc CreateAdministrator (CreateManagerAdministrator) returns (ManagerAdministrator);
+    rpc GetAdministratorByID (ManagerAdministratorPrimaryKey) returns (ManagerAdministrator);
+    rpc GetAllAdministrators (GetListManagerAdministratorRequest) returns (GetListManagerAdministratorResponse);
+   // rpc UpdateAdministrator (UpdateManagerAdministrator) returns (ManagerAdministrator);
+    rpc DeleteAdministrator (ManagerAdministratorPrimaryKey) returns (ManagerAdministratorPrimaryKey);
+    rpc ExportToCSV( TableName) returns(Empty);
+
+}
+
+message Empty {
+    
+}
+
+
+message TableName {
+    string tableName = 1;
+    string outfilename = 2;
+    
+}
+
+
+message ManagerStudent {
+    string id = 1;
+    string fullname = 2;
+    string phone = 3;
+    double paid_sum = 4;
+    int32 course_count = 5;
+    double totalsum = 6;
+}
+
+message CreateManagerStudent {
+    string fullname = 1;
+    string phone = 2;
+    double paid_sum = 3;
+    int32 course_count = 4;
+    double totalsum = 5;
+}
+
+message UpdateManagerStudent {
+    string id = 1;
+    string fullname = 2;
+    string phone = 3;
+    double paid_sum = 4;
+    int32 course_count = 5;
+    double totalsum = 6;
+}
+
+message ManagerStudentPrimaryKey {
+    string id = 1;
+}
+
+message GetListManagerStudentRequest {
+    string search = 1;
+    int32 page = 2;
+    int32 limit = 3;
+}
+
+message GetListManagerStudentResponse {
+    int32 count = 1;
+    repeated ManagerStudent manager_students = 2;
+}
+
+message ManagerTeacher {
+    string id = 1;
+    string fullname = 2;
+    string phone = 3;
+    double salary = 4;
+    int32 months_worked = 5;
+    double totalsum = 6;
+    double ielts_score = 7;
+}
+
+message CreateManagerTeacher {
+    string fullname = 1;
+    string phone = 2;
+    double salary = 3;
+    int32 months_worked = 4;
+    double totalsum = 5;
+    double ielts_score = 6;
+}
+
+message UpdateManagerTeacher {
+    string id = 1;
+    string fullname = 2;
+    string phone = 3;
+    double salary = 4;
+    int32 months_worked = 5;
+    double totalsum = 6;
+    double ielts_score = 7;
+}
+
+message ManagerTeacherPrimaryKey {
+    string id = 1;
+}
+
+message GetListManagerTeacherRequest {
+    string search = 1;
+    int32 page = 2;
+    int32 limit = 3;
+}
+
+message GetListManagerTeacherResponse {
+    int32 count = 1;
+    repeated ManagerTeacher manager_teachers = 2;
+}
+
+message ManagerSupportTeacher {
+    string id = 1;
+    string fullname = 2;
+    string phone = 3;
+    double salary = 4;
+    int32 months_worked = 5;
+    double totalsum = 6;
+    double ielts_score = 7;
+}
+
+message CreateManagerSupportTeacher {
+    string fullname = 1;
+    string phone = 2;
+    double salary = 3;
+    int32 months_worked = 4;
+    double totalsum = 5;
+    double ielts_score = 6;
+}
+
+message UpdateManagerSupportTeacher {
+    string id = 1;
+    string fullname = 2;
+    string phone = 3;
+    double salary = 4;
+    int32 months_worked = 5;
+    double totalsum = 6;
+    double ielts_score = 7;
+}
+
+message ManagerSupportTeacherPrimaryKey {
+    string id = 1;
+}
+
+message GetListManagerSupportTeacherRequest {
+    string search = 1;
+    int32 page = 2;
+    int32 limit = 3;
+}
+
+message GetListManagerSupportTeacherResponse {
+    int32 count = 1;
+    repeated ManagerSupportTeacher manager_support_teachers = 2;
+}
+
+message ManagerAdministrator {
+    string id = 1;
+    string fullname = 2;
+    string phone = 3;
+    double salary = 4;
+    int32 months_worked = 5;
+    double totalsum = 6;
+    double ielts_score = 7;
+}
+
+message CreateManagerAdministrator {
+    string fullname = 1;
+    string phone = 2;
+    double salary = 3;
+    int32 months_worked = 4;
+    double totalsum = 5;
+    double ielts_score = 6;
+}
+
+message UpdateManagerAdministrator {
+    string id = 1;
+    string fullname = 2;
+    string phone = 3;
+    double salary = 4;
+    int32 months_worked = 5;
+    double totalsum = 6;
+    double ielts_score = 7;
+}
+
+message ManagerAdministratorPrimaryKey {
+    string id = 1;
+}
+
+message GetListManagerAdministratorRequest {
+    string search = 1;
+    int32 page = 2;
+    int32 limit = 3;
+}
+
+message GetListManagerAdministratorResponse {
+    int32 count = 1;
+    repeated ManagerAdministrator manager_administrators = 2;
+}
+
+
+message Manager {
+    string id = 1;
+    string fullname = 2;
+    string phone = 3;
+    string password = 4;
+    double salary = 5;
+    string brach=6;
+}
+
+message CreateManagerRequest {
+    string fullname = 1;
+    string phone = 2;
+    string password = 3;
+    double salary = 4;
+    string brach=6;
+
+}
+
+
+
+message ManagerPrimaryKey {
+    string id = 1;
+}
+
+message GetAllManagersRequest {
+    int32 page = 1;
+    int32 limit = 2;
+    string search = 3;
+}
+
+message GetAllManagersResponse {
+    repeated Manager managers = 1;
+    int32 total_count = 2;
+}
+
+message UpdateManagerRequest {
+    string id = 1;
+    string fullname = 2;
+    string phone = 3;
+    string password = 4;
+    double salary = 5;
+    string brach=6;
+
+}

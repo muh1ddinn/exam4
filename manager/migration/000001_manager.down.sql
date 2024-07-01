@@ -1,0 +1,24 @@
+DROP TABLE IF EXISTS payment;
+DROP TABLE IF EXISTS event;
+DROP TABLE IF EXISTS administration_roles;
+DROP TABLE IF EXISTS supportteacher_roles;
+DROP TABLE IF EXISTS teacher_roles;
+DROP TABLE IF EXISTS student_roles;
+DROP TABLE IF EXISTS administration;
+DROP TABLE IF EXISTS supportteacher;
+DROP TABLE IF EXISTS teacher;
+DROP TABLE IF EXISTS task_score;
+DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS groups;
+DROP TABLE IF EXISTS journal;
+DROP TABLE IF EXISTS schedules;
+DROP TABLE IF EXISTS lesson;
+DROP TABLE IF EXISTS type;
+DROP TABLE IF EXISTS task;
+DROP TABLE IF EXISTS roles;
+DROP TYPE IF EXISTS role_names;
+
+DROP SEQUENCE teacher_login_seq;
+DROP SEQUENCE student_login_seq;
+DROP SEQUENCE supportteacher_login_seq;
+DROP SEQUENCE administration_login_seq;

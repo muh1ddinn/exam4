@@ -1,0 +1,56 @@
+syntax="proto3";
+
+option go_package = "genproto/manager_service";
+
+package manager_service;
+
+
+
+service ManagerEventService {
+    rpc CreateEvent(CreateEventRequest) returns (Event) {}
+    rpc GetEventByID(EventID) returns (Event) {}
+    rpc GetAllEvents(GetAllEventsRequest) returns (GetAllEventsResponse) {}
+    rpc UpdateEvent(UpdateEventRequest) returns (Event) {}
+    rpc DeleteEvent(EventID) returns (EventID) {}
+}
+
+message EventID {
+    string id = 1;
+}
+
+message CreateEventRequest {
+    string student_name = 1;
+    string topic = 2;
+    string day = 3;
+    string branch = 4;
+    string start_time = 5;
+}
+
+message Event {
+    string id = 1;
+    string student_name = 2;
+    string topic = 3;
+    string day = 4;
+    string branch = 5;
+    string start_time = 6;
+}
+
+message UpdateEventRequest {
+    string id = 1;
+    string student_name = 2;
+    string topic = 3;
+    string day = 4;
+    string branch = 5;
+    string start_time = 6;
+}
+
+message GetAllEventsRequest {
+    uint64 page = 1;
+    uint64 limit = 2;
+    string search = 3;
+}
+
+message GetAllEventsResponse {
+    int64 count = 1;
+    repeated Event events = 2;
+}

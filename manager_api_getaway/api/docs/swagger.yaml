@@ -1,0 +1,2395 @@
+definitions:
+  manager_service.CreateGroupRequest:
+    properties:
+      branch:
+        type: string
+      group_name:
+        type: string
+      journal_id:
+        type: string
+      support_teacher:
+        type: string
+      teacher:
+        type: string
+      type_id:
+        type: string
+    type: object
+  manager_service.CreateJournalRequest:
+    properties:
+      from_date:
+        type: string
+      schedules_id:
+        type: string
+      student_name:
+        type: string
+      to_date:
+        type: string
+    type: object
+  manager_service.CreateLessonRequest:
+    properties:
+      lesson_name:
+        type: string
+      task_id:
+        type: string
+    type: object
+  manager_service.CreateManagerStudent:
+    properties:
+      first_name:
+        type: string
+      group_id:
+        type: string
+      journal:
+        type: string
+      last_name:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+    type: object
+  manager_service.CreateManagerSupportTeacher:
+    properties:
+      branch:
+        type: string
+      created_at:
+        type: string
+      fullname:
+        type: string
+      ielts_attempts_count:
+        type: string
+      ielts_score:
+        type: number
+      password:
+        type: string
+      phone:
+        type: string
+      salary:
+        type: number
+    type: object
+  manager_service.CreateManagerTeacher:
+    properties:
+      branch:
+        type: string
+      fullname:
+        type: string
+      group_id:
+        type: string
+      ielts_attempts_count:
+        type: string
+      ielts_score:
+        type: number
+      password:
+        type: string
+      phone:
+        type: string
+      salary:
+        type: number
+    type: object
+  manager_service.CreateSchedulesRequest:
+    properties:
+      end_time:
+        type: string
+      lesson_id:
+        type: string
+      start_time:
+        type: string
+    type: object
+  manager_service.CreateTaskRequest:
+    properties:
+      created_by:
+        type: string
+      deadline:
+        type: string
+      label:
+        type: string
+      score:
+        type: number
+    type: object
+  manager_service.CreateTypeRequest:
+    properties:
+      course_name:
+        type: string
+      description:
+        type: string
+    type: object
+  manager_service.Journal:
+    properties:
+      from_date:
+        type: string
+      id:
+        type: string
+      schedules:
+        $ref: '#/definitions/manager_service.Schedules'
+      schedules_id:
+        type: string
+      student_name:
+        type: string
+      students:
+        items:
+          $ref: '#/definitions/manager_service.Student'
+        type: array
+      to_date:
+        type: string
+    type: object
+  manager_service.Lesson:
+    properties:
+      id:
+        type: string
+      lesson_name:
+        type: string
+      task:
+        $ref: '#/definitions/manager_service.Task'
+      task_id:
+        type: string
+    type: object
+  manager_service.Schedules:
+    properties:
+      end_time:
+        type: string
+      id:
+        type: string
+      lesoon:
+        $ref: '#/definitions/manager_service.Lesson'
+      lesson_id:
+        type: string
+      start_time:
+        type: string
+    type: object
+  manager_service.Student:
+    properties:
+      first_name:
+        type: string
+      id:
+        type: string
+      last_name:
+        type: string
+    type: object
+  manager_service.Task:
+    properties:
+      created_by:
+        type: string
+      deadline:
+        type: string
+      id:
+        type: string
+      label:
+        type: string
+      score:
+        type: number
+    type: object
+  manager_service.TaskScore:
+    properties:
+      id:
+        type: string
+      score:
+        type: string
+      student_id:
+        type: string
+      task_id:
+        type: string
+    type: object
+  manager_service.TeacherGetTeacherInfoResponse:
+    properties:
+      journals:
+        items:
+          $ref: '#/definitions/manager_service.Journal'
+        type: array
+      schedules:
+        items:
+          $ref: '#/definitions/manager_service.Schedules'
+        type: array
+      students:
+        items:
+          $ref: '#/definitions/manager_service.Student'
+        type: array
+      task:
+        items:
+          $ref: '#/definitions/manager_service.Task'
+        type: array
+      tasl_score:
+        items:
+          $ref: '#/definitions/manager_service.TaskScore'
+        type: array
+      teacher:
+        $ref: '#/definitions/manager_service.TeacherTeacher'
+    type: object
+  manager_service.TeacherTeacher:
+    properties:
+      branch:
+        type: string
+      fullname:
+        type: string
+      group_id:
+        type: integer
+      id:
+        type: string
+      ielts_attempts_count:
+        type: integer
+      ielts_score:
+        type: number
+      password:
+        type: string
+      phone:
+        type: string
+      salary:
+        type: number
+    type: object
+  manager_service.UpdateManagerStudent:
+    properties:
+      first_name:
+        type: string
+      group_id:
+        type: string
+      id:
+        type: string
+      last_name:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+    type: object
+  manager_service.UpdateManagerSupportTeacher:
+    properties:
+      branch:
+        type: string
+      fullname:
+        type: string
+      id:
+        type: string
+      ielts_attempts_count:
+        type: string
+      ielts_score:
+        type: number
+      password:
+        type: string
+      phone:
+        type: string
+      salary:
+        type: number
+    type: object
+  manager_service.UpdateManagerTeacher:
+    properties:
+      branch:
+        type: string
+      fullname:
+        type: string
+      id:
+        type: string
+      ielts_attempts_count:
+        type: string
+      ielts_score:
+        type: number
+      password:
+        type: string
+      phone:
+        type: string
+      role_id:
+        type: integer
+      salary:
+        type: number
+    type: object
+  models.ResponseError:
+    properties:
+      error: {}
+    type: object
+  models.ResponseSuccess:
+    properties:
+      data: {}
+      metadata: {}
+    type: object
+  superadmin_service.CreateManagerAdministrator:
+    properties:
+      fullname:
+        type: string
+      ielts_score:
+        type: number
+      months_worked:
+        type: integer
+      phone:
+        type: string
+      salary:
+        type: number
+      totalsum:
+        type: number
+    type: object
+  superadmin_service.CreateManagerRequest:
+    properties:
+      brach:
+        type: string
+      fullname:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      salary:
+        type: number
+    type: object
+  superadmin_service.CreateManagerStudent:
+    properties:
+      course_count:
+        type: integer
+      fullname:
+        type: string
+      paid_sum:
+        type: number
+      phone:
+        type: string
+      totalsum:
+        type: number
+    type: object
+  superadmin_service.CreateManagerSupportTeacher:
+    properties:
+      fullname:
+        type: string
+      ielts_score:
+        type: number
+      months_worked:
+        type: integer
+      phone:
+        type: string
+      salary:
+        type: number
+      totalsum:
+        type: number
+    type: object
+  superadmin_service.CreateManagerTeacher:
+    properties:
+      fullname:
+        type: string
+      ielts_score:
+        type: number
+      months_worked:
+        type: integer
+      phone:
+        type: string
+      salary:
+        type: number
+      totalsum:
+        type: number
+    type: object
+  superadmin_service.UpdateManagerRequest:
+    properties:
+      brach:
+        type: string
+      fullname:
+        type: string
+      id:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      salary:
+        type: number
+    type: object
+  superadmin_service.UpdateManagerStudent:
+    properties:
+      course_count:
+        type: integer
+      fullname:
+        type: string
+      id:
+        type: string
+      paid_sum:
+        type: number
+      phone:
+        type: string
+      totalsum:
+        type: number
+    type: object
+  superadmin_service.UpdateManagerSupportTeacher:
+    properties:
+      fullname:
+        type: string
+      id:
+        type: string
+      ielts_score:
+        type: number
+      months_worked:
+        type: integer
+      phone:
+        type: string
+      salary:
+        type: number
+      totalsum:
+        type: number
+    type: object
+  superadmin_service.UpdateManagerTeacher:
+    properties:
+      fullname:
+        type: string
+      id:
+        type: string
+      ielts_score:
+        type: number
+      months_worked:
+        type: integer
+      phone:
+        type: string
+      salary:
+        type: number
+      totalsum:
+        type: number
+    type: object
+info:
+  contact: {}
+paths:
+  /administrators:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves information about all administrators
+      parameters:
+      - description: Search
+        in: query
+        name: search
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all administrators
+      tags:
+      - administrator
+    post:
+      consumes:
+      - application/json
+      description: Create a new administrator
+      parameters:
+      - description: Administrator
+        in: body
+        name: administrator
+        required: true
+        schema:
+          $ref: '#/definitions/superadmin_service.CreateManagerAdministrator'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Create an administrator
+      tags:
+      - administrator
+  /administrators/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes an administrator by its ID
+      parameters:
+      - description: Administrator ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete an administrator by its ID
+      tags:
+      - administrator
+    get:
+      consumes:
+      - application/json
+      description: Retrieves an administrator by its ID
+      parameters:
+      - description: Administrator ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get an administrator by its ID
+      tags:
+      - administrator
+  /any/export/csv:
+    get:
+      description: Export contacts to a CSV file
+      parameters:
+      - description: Table Name
+        in: query
+        name: table
+        required: true
+        type: string
+      - description: Output File Name
+        in: query
+        name: outfilename
+        required: true
+        type: string
+      produces:
+      - text/csv
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: file
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Export contacts to CSV
+      tags:
+      - csv
+  /forsupportteacher/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a forsupportteacher by its ID
+      parameters:
+      - description: forsupportteacher ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a forsupportteacher by its ID
+      tags:
+      - forsupportteacher
+  /forteacher/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a forteacher by its ID
+      parameters:
+      - description: forteacher ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/manager_service.TeacherGetTeacherInfoResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a forteacher by its ID
+      tags:
+      - forteacher
+  /groups:
+    post:
+      consumes:
+      - application/json
+      description: Create a new group
+      parameters:
+      - description: group
+        in: body
+        name: group
+        required: true
+        schema:
+          $ref: '#/definitions/manager_service.CreateGroupRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a group
+      tags:
+      - groups
+  /groups/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a group by its ID
+      parameters:
+      - description: group ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a group by its ID
+      tags:
+      - groups
+  /journal:
+    post:
+      consumes:
+      - application/json
+      description: Create a new journal
+      parameters:
+      - description: journal
+        in: body
+        name: group
+        required: true
+        schema:
+          $ref: '#/definitions/manager_service.CreateJournalRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a journal
+      tags:
+      - journal
+  /journal/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a journal by its ID
+      parameters:
+      - description: journal ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a journal by its ID
+      tags:
+      - journal
+  /lesson:
+    post:
+      consumes:
+      - application/json
+      description: Create a new lesson
+      parameters:
+      - description: talessonsk
+        in: body
+        name: group
+        required: true
+        schema:
+          $ref: '#/definitions/manager_service.CreateLessonRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a lesson
+      tags:
+      - lesson
+  /lesson/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a lesson by its ID
+      parameters:
+      - description: lesson ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a lesson by its ID
+      tags:
+      - lesson
+  /managers:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves information about all managers
+      parameters:
+      - description: Search
+        in: query
+        name: search
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all managers
+      tags:
+      - manager
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing manager
+      parameters:
+      - description: Manager
+        in: body
+        name: manager
+        required: true
+        schema:
+          $ref: '#/definitions/superadmin_service.UpdateManagerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a manager
+      tags:
+      - manager
+    post:
+      consumes:
+      - application/json
+      description: Create a new manager
+      parameters:
+      - description: Manager
+        in: body
+        name: manager
+        required: true
+        schema:
+          $ref: '#/definitions/superadmin_service.CreateManagerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a manager
+      tags:
+      - manager
+  /managers/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a manager by its ID
+      parameters:
+      - description: Manager ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a manager by its ID
+      tags:
+      - manager
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a manager by its ID
+      parameters:
+      - description: Manager ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a manager by its ID
+      tags:
+      - manager
+  /schedule:
+    post:
+      consumes:
+      - application/json
+      description: Create a new schedule
+      parameters:
+      - description: 'schedule '
+        in: body
+        name: group
+        required: true
+        schema:
+          $ref: '#/definitions/manager_service.CreateSchedulesRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a schedule
+      tags:
+      - schedule
+  /schedule/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a schedule by its ID
+      parameters:
+      - description: schedule ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a schedule by its ID
+      tags:
+      - schedule
+  /students:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves information about all students
+      parameters:
+      - description: Search
+        in: query
+        name: search
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all students
+      tags:
+      - students
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing student
+      parameters:
+      - description: student
+        in: body
+        name: student
+        required: true
+        schema:
+          $ref: '#/definitions/manager_service.UpdateManagerStudent'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a student
+      tags:
+      - students
+    post:
+      consumes:
+      - application/json
+      description: Create a new student
+      parameters:
+      - description: student
+        in: body
+        name: student
+        required: true
+        schema:
+          $ref: '#/definitions/manager_service.CreateManagerStudent'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a student
+      tags:
+      - students
+  /students/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a student by its ID
+      parameters:
+      - description: Student ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a student by its ID
+      tags:
+      - students
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a student by its ID
+      parameters:
+      - description: Student ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a student by its ID
+      tags:
+      - students
+  /superadminstudents:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves information about all students
+      parameters:
+      - description: Search
+        in: query
+        name: search
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all superadminstudents
+      tags:
+      - superadminstudents
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing superadminstudents
+      parameters:
+      - description: student
+        in: body
+        name: superadminstudents
+        required: true
+        schema:
+          $ref: '#/definitions/superadmin_service.UpdateManagerStudent'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a student
+      tags:
+      - superadminstudents
+    post:
+      consumes:
+      - application/json
+      description: Create a new superadminstudents
+      parameters:
+      - description: student
+        in: body
+        name: student
+        required: true
+        schema:
+          $ref: '#/definitions/superadmin_service.CreateManagerStudent'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a superadminstudents
+      tags:
+      - superadminstudents
+  /superadminstudents/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a superadminstudents by its ID
+      parameters:
+      - description: Student ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a superadminstudents by its ID
+      tags:
+      - superadminstudents
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a superadminstudents by its ID
+      parameters:
+      - description: Student ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a superadminstudents by its ID
+      tags:
+      - studensuperadminstudentsts
+  /superadminsupportteachers:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves information about all support teachers
+      parameters:
+      - description: Search
+        in: query
+        name: search
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all support teachers
+      tags:
+      - supportteacher
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing support teacher
+      parameters:
+      - description: Support Teacher
+        in: body
+        name: supportteacher
+        required: true
+        schema:
+          $ref: '#/definitions/superadmin_service.UpdateManagerSupportTeacher'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a support teacher
+      tags:
+      - supportteacher
+    post:
+      consumes:
+      - application/json
+      description: Create a new support teacher
+      parameters:
+      - description: Support Teacher
+        in: body
+        name: supportteacher
+        required: true
+        schema:
+          $ref: '#/definitions/superadmin_service.CreateManagerSupportTeacher'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a support teacher
+      tags:
+      - supportteacher
+  /superadminsupportteachers/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a support teacher by its ID
+      parameters:
+      - description: Support Teacher ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a support teacher by its ID
+      tags:
+      - supportteacher
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a support teacher by its ID
+      parameters:
+      - description: Support Teacher ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a support teacher by its ID
+      tags:
+      - supportteacher
+  /superadminteachers:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves information about all teachers
+      parameters:
+      - description: Search
+        in: query
+        name: search
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all teachers
+      tags:
+      - teacher
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing teacher
+      parameters:
+      - description: Teacher
+        in: body
+        name: teacher
+        required: true
+        schema:
+          $ref: '#/definitions/superadmin_service.UpdateManagerTeacher'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a teacher
+      tags:
+      - teacher
+    post:
+      consumes:
+      - application/json
+      description: Create a new teacher
+      parameters:
+      - description: Teacher
+        in: body
+        name: teacher
+        required: true
+        schema:
+          $ref: '#/definitions/superadmin_service.CreateManagerTeacher'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a teacher
+      tags:
+      - teacher
+  /superadminteachers/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a teacher by its ID
+      parameters:
+      - description: Teacher ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a teacher by its ID
+      tags:
+      - teacher
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a teacher by its ID
+      parameters:
+      - description: Teacher ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a teacher by its ID
+      tags:
+      - teacher
+  /supportteachers:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves information about all support teachers
+      parameters:
+      - description: Search
+        in: query
+        name: search
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all support teachers
+      tags:
+      - supportteachers
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing support teacher
+      parameters:
+      - description: Support Teacher
+        in: body
+        name: supportteacher
+        required: true
+        schema:
+          $ref: '#/definitions/manager_service.UpdateManagerSupportTeacher'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a support teacher
+      tags:
+      - supportteachers
+    post:
+      consumes:
+      - application/json
+      description: Create a new support teacher
+      parameters:
+      - description: Support Teacher
+        in: body
+        name: supportteacher
+        required: true
+        schema:
+          $ref: '#/definitions/manager_service.CreateManagerSupportTeacher'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a support teacher
+      tags:
+      - supportteachers
+  /supportteachers/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a support teacher by its ID
+      parameters:
+      - description: Support Teacher ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a support teacher by its ID
+      tags:
+      - supportteachers
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a support teacher by its ID
+      parameters:
+      - description: Support Teacher ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a support teacher by its ID
+      tags:
+      - supportteachers
+  /task:
+    post:
+      consumes:
+      - application/json
+      description: Create a new task
+      parameters:
+      - description: task
+        in: body
+        name: group
+        required: true
+        schema:
+          $ref: '#/definitions/manager_service.CreateTaskRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a task
+      tags:
+      - task
+  /task/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a task by its ID
+      parameters:
+      - description: task ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a task by its ID
+      tags:
+      - task
+  /teachers:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves information about all teachers
+      parameters:
+      - description: Search
+        in: query
+        name: search
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all teachers
+      tags:
+      - teachers
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing teacher
+      parameters:
+      - description: Teacher
+        in: body
+        name: teacher
+        required: true
+        schema:
+          $ref: '#/definitions/manager_service.UpdateManagerTeacher'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a teacher
+      tags:
+      - teachers
+    post:
+      consumes:
+      - application/json
+      description: Create a new teacher
+      parameters:
+      - description: Teacher
+        in: body
+        name: teacher
+        required: true
+        schema:
+          $ref: '#/definitions/manager_service.CreateManagerTeacher'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a teacher
+      tags:
+      - teachers
+  /teachers/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a teacher by its ID
+      parameters:
+      - description: Teacher ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a teacher by its ID
+      tags:
+      - teachers
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a teacher by its ID
+      parameters:
+      - description: Teacher ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a teacher by its ID
+      tags:
+      - teachers
+  /type:
+    post:
+      consumes:
+      - application/json
+      description: Create a new type
+      parameters:
+      - description: 'type '
+        in: body
+        name: group
+        required: true
+        schema:
+          $ref: '#/definitions/manager_service.CreateTypeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a type
+      tags:
+      - type
+  /type/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a type by its ID
+      parameters:
+      - description: type ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResponseSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a type by its ID
+      tags:
+      - type
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

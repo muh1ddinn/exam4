@@ -1,0 +1,325 @@
+syntax ="proto3";
+option go_package = "genproto/manager_service";
+package manager_service;
+
+
+
+service ManagerGroupService {
+    rpc CreateGroup(CreateGroupRequest) returns (GroupID) {}
+    rpc GetGroupByID(GroupID) returns (Group) {}
+    //rpc GetAllGroups(GetAllGroupsRequest) returns (GetAllGroupsResponse) {}
+   // rpc UpdateGroup(UpdateGroupRequest) returns (Group) {}
+  //  rpc DeleteGroup(GroupID) returns (GroupID) {}
+    
+    rpc CreateTask(CreateTaskRequest) returns (TaskID) {}
+    rpc GetTaskByID(TaskID) returns (Task) {}
+    rpc GetAllTasks(GetAllTasksRequest) returns (GetAllTasksResponse) {}
+    rpc UpdateTask(UpdateTaskRequest) returns (Task) {}
+   // rpc DeleteTask(TaskID) returns (TaskID) {}
+
+    rpc CreateType(CreateTypeRequest) returns (TypeID) {}
+    rpc GetTypeByID(TypeID) returns (Type) {}
+    //rpc GetAllTypes(GetAllTypesRequest) returns (GetAllTypesResponse) {}
+    //rpc UpdateType(UpdateTypeRequest) returns (Type) {}
+   // rpc DeleteType(TypeID) returns (TypeID) {}
+
+
+   rpc CreateSchedules(CreateSchedulesRequest) returns (SchedulesID) {}
+   rpc GetSchedulesByID(SchedulesID) returns (Schedules) {}
+
+    rpc CreateJournal(CreateJournalRequest) returns (JournalID) {}
+    rpc GetJournalByID(JournalID) returns (Journal) {}
+    //rpc GetAllJournals(GetAllJournalsRequest) returns (GetAllJournalsResponse) {}
+    //rpc UpdateJournal(UpdateJournalRequest) returns (Journal) {}
+    //rpc DeleteJournal(JournalID) returns (JournalID) {}
+
+    rpc CreateLesson(CreateLessonRequest) returns (LessonID) {}
+    rpc GetLessonByID(LessonID) returns (Lesson) {}
+    //rpc GetAllLesson(GetAllLessonRequest) returns (GetAllLessonResponse) {}
+    //rpc UpdateLessonl(UpdateLessonRequest) returns (Lesson) {}
+    //rpc DeleteLesson(LessonID) returns (LessonID) {}
+
+
+    rpc GetTeacherInfo(TeacherGetTeacherInfoRequest) returns (TeacherGetTeacherInfoResponse);
+    rpc GetSupporTeacherInfo(TeacherGetTeacherInfoRequest) returns (TeacherGetSupportInfoResponse);
+    
+}
+
+message GroupID {
+    string id = 1;
+}
+
+
+
+message TeacherGetTeacherInfoRequest {
+    string id = 1;
+}
+
+message CreateGroupRequest {
+    string group_name = 1;
+    string branch = 2;
+    string teacher = 3;
+    string support_teacher = 4;
+    string journal_id = 5;
+    string type_id = 6;
+
+}
+   
+message TeacherGetTeacherInfoResponse {
+    TeacherTeacher teacher = 1;
+    repeated  Journal journals = 2;
+    repeated Task task=3;
+    repeated Schedules schedules = 4;
+    repeated Student students = 5;
+    repeated Task_score tasl_score=6;
+}
+
+message TeacherGetSupportInfoResponse {
+    SupportTeacher support = 1;
+     repeated  Journal journals = 2;
+    repeated Task task=3;
+    repeated Schedules schedules = 4;
+    repeated Student students = 5;
+}
+     
+
+message TeacherTeacher {
+    string id = 1;
+    string fullname = 2;
+    string phone = 3;
+    string password = 4;
+    float salary = 5;
+    float ielts_score = 6;
+    int32 ielts_attempts_count = 7;
+    string branch = 8;
+    int64 group_id = 9;
+}
+
+message SupportTeacher {
+    string id = 1;
+    string fullname = 2;
+    string phone = 3;
+    string password = 4;
+    float salary = 5;
+    float ielts_score = 6;
+    int32 ielts_attempts_count = 7;
+    string branch = 8;
+    int64 group_id = 9;
+}
+
+message Group {
+    string id = 1;
+    string group_name = 2;
+    string teacher =3;
+    string support_teacher=4;
+    string branch = 5;
+    string created_at = 6;
+    Type type =7;
+    Journal journal=8;   
+}
+
+message UpdateGroupRequest {
+    string id = 1;
+    string group_name = 2;
+    string branch = 3;
+}
+
+message GetAllGroupsRequest {
+    uint64 page = 1;
+    uint64 limit = 2;
+    string search = 3;
+}
+
+message GetAllGroupsResponse {
+    int64 count = 1;
+    repeated Group groups = 2;
+}
+
+
+message TaskID {
+    string id = 1;
+}
+
+message CreateTaskRequest {
+    string label = 1;
+    string deadline = 2;
+    float score = 3;
+    string created_by = 4;
+}
+
+message Task {
+    string id = 1;
+    string label = 2;
+    string deadline = 3;
+    float score = 4;
+    string created_by = 5;
+}
+
+message UpdateTaskRequest {
+    string id = 1;
+    string label = 2;
+    string deadline = 3;
+    float score = 4;
+    string created_by = 5;
+}
+
+message GetAllTasksRequest {
+    uint64 page = 1;
+    uint64 limit = 2;
+    string search = 3;
+}
+
+message GetAllTasksResponse {
+    int64 count = 1;
+    repeated Task tasks = 2;
+    
+}
+
+
+message TypeID {
+string id = 1;
+}
+
+message CreateTypeRequest {
+string course_name = 1;
+string description = 2;
+}
+
+message Type {
+string id = 1;
+string course_name = 2;
+string description = 3;
+
+}
+
+message UpdateTypeRequest {
+string id = 1;
+string course_name = 2;
+string description = 3;
+}
+
+message GetAllTypesRequest {
+uint64 page = 1;
+uint64 limit = 2;
+string search = 3;
+}
+
+message GetAllTypesResponse {
+int64 count = 1;
+repeated Type types = 2;
+}
+
+  
+
+message JournalID {
+    string id = 1;
+}
+
+
+message CreateJournalRequest {
+    string student_name = 1;
+    string from_date = 2;
+    string to_date = 3;
+    string schedules_id = 4;
+}
+message Journal {
+    string id = 1;
+    string student_name = 2;
+    string from_date = 3;
+    string to_date = 4;
+    string schedules_id = 5;
+    Schedules schedules = 6;
+    repeated Student students = 7;
+}
+
+message Student {
+    string id = 1;
+    string first_name = 2;
+    string last_name = 3;
+}
+message UpdateJournalRequest {
+    string id = 1;
+    string student_name = 2;
+    string from_date = 3;
+    string to_date = 4;
+    string schedules_id = 5;
+}
+
+message GetAllJournalsRequest {
+    uint64 page = 1;
+    uint64 limit = 2;
+    string search = 3;
+}
+
+message GetAllJournalsResponse {
+    int64 count = 1;
+    repeated Journal journals = 2;
+}
+
+
+message CreateschedulesRequest {
+    string start_time = 1;
+    string end_time = 2;
+    string lesson_id = 3;
+}
+
+
+message SchedulesID {
+    string id = 1;
+}
+message Schedules {
+    string id = 1;
+    string start_time = 2;
+    string end_time = 3;
+    string lesson_id = 4;
+    Lesson lesoon=5;
+  
+}
+message Task_score {
+    string id = 1;
+    string student_id = 2;
+    string task_id = 3;
+    string score=4;
+}
+
+message CreateSchedulesRequest {
+    string start_time = 1;
+    string end_time = 2;
+    string lesson_id = 3;
+}
+
+
+message LessonID {
+    string id = 1;
+    }
+
+    message CreateLessonRequest {
+    string lesson_name = 1;
+    string task_id = 2;
+    }
+    
+    message Lesson {
+    string id = 1;
+    string lesson_name = 2;
+    string task_id = 3;
+    Task task=4;
+    }
+    
+    message UpdateLessonRequest {
+    string id = 1;
+    string lesson_name = 2;
+    string task_id = 3;
+
+    }
+    
+    message GetAllLessonRequest {
+    uint64 page = 1;
+    uint64 limit = 2;
+    string search = 3;
+    }
+    
+    message GetAllLessonResponse {
+    int64 count = 1;
+    repeated Lesson types = 2;
+    }
+    

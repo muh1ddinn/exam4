@@ -1,0 +1,282 @@
+Table Roles {
+  id SERIAL [pk]
+  role_name VARCHAR(50) [unique, not null]
+}
+
+Table student {
+  id UUID [pk]
+  first_name VARCHAR(50)
+  last_name VARCHAR(50)
+  phone VARCHAR(100) [unique, not null]
+  password VARCHAR(100) [not null] 
+  created_at TIMESTAMP [default: 'CURRENT_TIMESTAMP']
+  group_id UUID [ref: > group.id, not null]
+}
+
+Table teacher {
+  id UUID 
+  fullname VARCHAR(50) [not null]
+  phone VARCHAR(100) [unique, not null]
+  password VARCHAR(100) [not null] 
+  salary FLOAT [not null]
+  ielts_score FLOAT
+  ielts_attempts_count VARCHAR(70)
+  branch VARCHAR(60)
+  created_at TIMESTAMP [default: 'CURRENT_TIMESTAMP']
+}
+
+Table supportteacher {
+  id UUID [pk]
+  fullname VARCHAR(50) [not null]
+  phone VARCHAR(100) [unique, not null]
+  password VARCHAR(100) [not null] 
+  salary FLOAT [not null]
+  ielts_score FLOAT
+  ielts_attempts_count VARCHAR(70)
+  branch VARCHAR(60)
+  created_at TIMESTAMP [default: 'CURRENT_TIMESTAMP']
+}
+
+Table administration {
+  id UUID 
+  fullname VARCHAR(50) [not null]
+  phone VARCHAR(100) [unique, not null]
+  password VARCHAR(100) [not null] 
+  salary FLOAT [not null]
+  ielts_score FLOAT
+  ielts_attempts_count VARCHAR(70)
+  branch VARCHAR(60)
+  created_at TIMESTAMP [default: 'CURRENT_TIMESTAMP']
+}
+
+Table student_roles {
+  student_id UUID [ref: > student.id, not null]
+  role_id INT [ref: > Roles.id, not null]
+  primary key (student_id, role_id)
+}
+
+Table teacher_roles {
+  teacher_id UUID [ref: > teacher.id, not null]
+  role_id INT [ref: > Roles.id, not null]
+  primary key (teacher_id, role_id)
+}
+
+Table supportteacher_roles {
+  supportteacher_id UUID [ref: > supportteacher.id, not null]
+  role_id INT [ref: > Roles.id, not null]
+  primary key (supportteacher_id, role_id)
+} 
+
+Table administration_roles {
+  administration_id UUID [ref: > administration.id, not null]
+  role_id INT [ref: > Roles.id, not null]
+  primary key (administration_id, role_id)
+}
+
+Table type {
+  id SERIAL [pk]
+  course_name VARCHAR(100) [not null]
+  description TEXT
+}
+
+Table journal {
+  id SERIAL [pk]
+  student_id UUID [ref: > student.id, not null]
+  from_date TIMESTAMP
+  to_date TIMESTAMP
+  schedules_id UUID [ref: > schedules.id, not null]
+}
+
+Table lesson {
+  id SERIAL [pk]
+  lesson_name VARCHAR(100) [not null]
+  type_id INT [ref: > type.id, not null]
+  task_id INT [ref: > task.id, not null]
+}
+
+Table task {
+  id SERIAL [pk]
+  label VARCHAR
+  deadline TIMESTAMP
+  score FLOAT
+  created_by VARCHAR
+  teacher_id UUID [ref: > teacher.id, not null]
+}
+
+Table group {
+  id UUID 
+  group_name VARCHAR(100) [not null]
+  fullname VARCHAR(50) [not null]
+  student_id UUID [ref: > student.id, not null]
+  supportteacher_id UUID [ref: > supportteacher.id, not null]
+  branch VARCHAR(50) [not null]
+}
+
+Table schedules {
+  id UUID [pk]
+  lesson_id INT [ref: > lesson.id, not null]
+  start_time TIMESTAMP
+  end_time TIMESTAMP
+}
+
+
+TABLE event {
+  id UUID 
+  student_name VARCHAR(50) [not null]
+  topic VARCHAR(50)
+  day VARCHAR(10)
+  branch VARCHAR(20)
+  start_time TIMESTAMP
+}
+
+
+
+TABLE payment {
+  student_name VARCHAR(50) [not null]
+  type VARCHAR(50)
+  sum flaot
+  branch VARCHAR(20)
+  from_date TIMESTAMP
+  to_date TIMESTAMP}
+
+
+
+
+
+  //////////////////////////////////
+
+
+CREATE TABLE student (
+    id UUID PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    phone VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    group_id UUID NOT NULL REFERENCES "group" (id)
+    role_id int REFERENCES roles (id) DEFAULT 
+);
+
+CREATE TABLE teacher (
+    id UUID PRIMARY KEY,
+    fullname VARCHAR(50) NOT NULL,
+    phone VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    salary FLOAT NOT NULL,
+    ielts_score FLOAT,
+    ielts_attempts_count VARCHAR(70),
+    branch VARCHAR(60),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE supportteacher (
+    id UUID PRIMARY KEY,
+    fullname VARCHAR(50) NOT NULL,
+    phone VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    salary FLOAT NOT NULL,
+    ielts_score FLOAT,
+    ielts_attempts_count VARCHAR(70),
+    branch VARCHAR(60),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE administration (
+    id UUID PRIMARY KEY,
+    fullname VARCHAR(50) NOT NULL,
+    phone VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    salary FLOAT NOT NULL,
+    ielts_score FLOAT,
+    ielts_attempts_count VARCHAR(70),
+    branch VARCHAR(60),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE student_roles (
+    student_id UUID NOT NULL REFERENCES student (id),
+    role_id INT NOT NULL REFERENCES Roles (id),
+    PRIMARY KEY (student_id, role_id)
+);
+
+CREATE TABLE teacher_roles (
+    teacher_id UUID NOT NULL REFERENCES teacher (id),
+    role_id INT NOT NULL REFERENCES Roles (id),
+    PRIMARY KEY (teacher_id, role_id)
+);
+
+CREATE TABLE supportteacher_roles (
+    supportteacher_id UUID NOT NULL REFERENCES supportteacher (id),
+    role_id INT NOT NULL REFERENCES Roles (id),
+    PRIMARY KEY (supportteacher_id, role_id)
+);
+
+CREATE TABLE administration_roles (
+    administration_id UUID NOT NULL REFERENCES administration (id),
+    role_id INT NOT NULL REFERENCES Roles (id),
+    PRIMARY KEY (administration_id, role_id)
+);
+
+CREATE TABLE type (
+    id SERIAL PRIMARY KEY,
+    course_name VARCHAR(100) NOT NULL,
+    description TEXT
+);
+
+CREATE TABLE journal (
+    id SERIAL PRIMARY KEY,
+    student_id UUID NOT NULL REFERENCES student (id),
+    from_date TIMESTAMP,
+    to_date TIMESTAMP,
+    schedules_id UUID NOT NULL REFERENCES schedules (id)
+);
+
+CREATE TABLE lesson (
+    id SERIAL PRIMARY KEY,
+    lesson_name VARCHAR(100) NOT NULL,
+    type_id INT NOT NULL REFERENCES type (id),
+    task_id INT NOT NULL REFERENCES task (id)
+);
+
+CREATE TABLE task (
+    id SERIAL PRIMARY KEY,
+    label VARCHAR,
+    deadline TIMESTAMP,
+    score FLOAT,
+    created_by VARCHAR,
+    teacher_id UUID NOT NULL REFERENCES teacher (id)
+);
+
+CREATE TABLE "group" (
+    id UUID PRIMARY KEY,
+    group_name VARCHAR(100) NOT NULL,
+    fullname VARCHAR(50) NOT NULL,
+    student_id UUID NOT NULL REFERENCES student (id),
+    supportteacher_id UUID NOT NULL REFERENCES supportteacher (id),
+    branch VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE schedules (
+    id UUID PRIMARY KEY,
+    lesson_id INT NOT NULL REFERENCES lesson (id),
+    start_time TIMESTAMP,
+    end_time TIMESTAMP
+);
+
+CREATE TABLE event (
+    id UUID PRIMARY KEY,
+    student_name VARCHAR(50) NOT NULL,
+    topic VARCHAR(50),
+    day VARCHAR(10),
+    branch VARCHAR(20),
+    start_time TIMESTAMP
+);
+
+CREATE TABLE payment (
+    student_name VARCHAR(50) NOT NULL,
+    type VARCHAR(50),
+    sum FLOAT,
+    branch VARCHAR(20),
+    from_date TIMESTAMP,
+    to_date TIMESTAMP
+);
