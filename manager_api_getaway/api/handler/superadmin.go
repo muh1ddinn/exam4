@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"managergetaway/genproto/superadmin_service"
 	"net/http"
-	"os"
 	"path/filepath"
 	"strings"
 
@@ -802,18 +801,21 @@ func (h *handler) ExportToCSV(c *gin.Context) {
 
 	fmt.Println(req.Outfilename)
 	// Read the file after it's exported (assuming it exists)
-	data, err := os.ReadFile(req.Outfilename)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-
-	}
-	fmt.Println(err, "err")
-	fmt.Println(data, "dataaaaaaaaa")
-
+	//data, err := os.ReadFile(req.Outfilename)
+	//if err != nil {
+	//	c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	//
+	//}
+	//fmt.Println(err, "err")
+	//fmt.Println(data, "dataaaaaaaaa")
+	//fmt.Println(a)
+	data := "donwload csv file to your super_admin folder"
 	// Set response headers for CSV download
 	c.Header("Content-Type", "text/csv")
 	c.Header("Content-Disposition", fmt.Sprintf("attachment; filename=%s", filepath.Base(req.Outfilename)))
 
 	// Return CSV data as response
-	c.Data(http.StatusOK, "text/csv", data)
+	//c.Data(http.StatusOK, "text/csv", data)
+	c.String(http.StatusOK, string(data))
+
 }
